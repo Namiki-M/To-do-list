@@ -18,5 +18,5 @@ use App\Http\Controllers\PlayersController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PlayersController::class, 'index']);
-Route::get('/index', [PlayersController::class, 'index']);
+// Route::get('/', [PlayersController::class, 'index']);
+// Route::get('/index', [PlayersController::class, 'index']);
