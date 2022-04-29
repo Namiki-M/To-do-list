@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\TodosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,9 @@ use App\Http\Controllers\PlayersController;
 //     return view('welcome');
 // });
 
+//mysqlのplayer一覧表示に使うroute設定
 // Route::get('/', [PlayersController::class, 'index']);
 // Route::get('/index', [PlayersController::class, 'index']);
+
+//pgsqlのTodoリストに使うroute設定
+Route::get('/', [TodosController::class, 'index']);
