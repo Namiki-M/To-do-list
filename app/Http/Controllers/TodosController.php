@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodosRequest;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Throwable;
@@ -15,12 +16,22 @@ class TodosController extends Controller
     //
 
     public function index() {
-        $todos = Todo::all();
+        // $todos = Todo::all();
+        $todos = Todo::orderBy('id', 'ASC')->get();
+       
 
         return view('todos.index', compact('todos'));
     }
 
-    public function store(Request $request){
+    public function store(TodosRequest $request){
+
+        // $validated = $request->validate([
+        //     'body' => 'required'
+        // ],
+        // [
+        //     'body.required' => 'タスク内容は必須入力です。'
+        // ]);
+        
         
         try{
             DB::transaction(function () use($request){
@@ -53,7 +64,7 @@ class TodosController extends Controller
 
     }
 
-    public function update(Request $request, $id){
+    public function update(TodosRequest $request, $id){
         $todo = Todo::findOrFail($id);
 
         $todo->body = $request->body;

@@ -19,6 +19,11 @@
             <div class="form-group">
                 <label>やることを追加してください</label>
                 <input type="text" name="body" class="form-control" placeholder="todo list" style="max-width:1000px;" value="{{ $todo->body }}" id="add_body">
+                @if($errors->any())
+                @foreach($errors->all() as $error)
+                <p class="text-danger">{{$error}}</p>
+                @endforeach
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">更新する</button>
         </form>
@@ -32,7 +37,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
 
-        var body_alert = "情報を入力してください。";
+        var body_alert = "タスク内容を入力してください。";
 
         $('#add_form').submit(function(){
             if($('#add_body').val() == ""){

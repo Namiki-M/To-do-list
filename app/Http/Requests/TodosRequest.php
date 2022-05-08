@@ -13,7 +13,8 @@ class TodosRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // 初期値のfalseをtrueに変更する。falseのままアクションを実行できません。
+        return true;
     }
 
     /**
@@ -24,7 +25,16 @@ class TodosRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'body' => 'required' 
+        ];
+    }
+
+    /**
+     * エラーメッセージ
+     */
+    public function messages(){
+        return [
+            'body.required' => 'タスク内容は必須入力です。'
         ];
     }
 }

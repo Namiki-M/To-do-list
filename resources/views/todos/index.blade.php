@@ -19,6 +19,11 @@
             <div class="form-group">
                 <label>やることを追加してください</label>
                 <input id="add_body" type="text" name="body" class="form-control" placeholder="todo list" style="max-width:1000px;">
+                @if($errors->any())
+                @foreach($errors->all() as $error)
+                <p class="text-danger">{{$error}}</p>
+                @endforeach
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">追加する</button>
         </form>
@@ -44,7 +49,7 @@
                 <td><form id="delete_{{$todo->id}}" action="{{ route("todos.delete", ['todo' => $todo->id ] ) }}" method="post">
                     @csrf
                     @method('post')
-                <button onclick="deletePost()" type="submit" class="btn btn-danger">削除</button>
+                <button onclick="deletePost(this);return false;" type="submit" class="btn btn-danger">削除</button>
                 </form>
                 </td>
 
@@ -63,7 +68,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
-        var body_alert = "情報を入力してください。";
+        var body_alert = "タスク内容を入力してください。";
 
         $('#add_form').submit(function(){
             if($('#add_body').val() == ""){
@@ -80,6 +85,10 @@
         function deletePost(e) {
             if(confirm('本当に削除してよろしいですか？')){
                 document.getElementById('delete_' + e.dataset.id).submit();
+            }
+            else{
+                window.alert('キャンセルされました');
+                return false;
             }
         }
     </script>
