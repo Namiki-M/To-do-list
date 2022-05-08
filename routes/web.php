@@ -31,5 +31,5 @@ Route::post('todos/delete/{todo}', [TodosController::class, 'delete'])->name('to
 Route::post('todos/add', [TodosController::class, 'add'])->name('todos.add');
 Route::post('todos/store', [TodosController::class, 'store'])->name('todos.store');
 Route::get('todos/edit/{todo}', [TodosController::class, 'edit'])->name('todos.edit');
-Route::post('todos/edit/{todo}', [TodosController::class, 'store'])->name('todos.update');
+Route::post('todos/edit/{todo}', [TodosController::class, 'update'])->name('todos.update');
 Route::post('todos/delete/{todo}', [TodosController::class, 'delete'])->name('todos.delete');
