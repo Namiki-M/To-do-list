@@ -39,7 +39,10 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    // 元の設定
+    // 'debug' => (bool) env('APP_DEBUG', false),
+    // エラーが発生した時、調査しやすいようにtrueにする
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------

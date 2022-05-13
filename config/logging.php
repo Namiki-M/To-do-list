@@ -17,7 +17,11 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    // 元々の設定
+    // 'default' => env('LOG_CHANNEL', 'stack'),
+
+    // herokuに設定した内容に合わせる
+    'default' => env('LOG_CHANNEL', 'errorlog'),
 
     /*
     |--------------------------------------------------------------------------
