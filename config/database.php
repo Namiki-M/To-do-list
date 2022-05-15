@@ -14,8 +14,11 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
+    // 元の設定
+    // 'default' => env('DB_CONNECTION', 'mysql'),
+    // 変更後
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
-    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +79,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
+            // 'sslmode' => 'require',
         ],
 
         'sqlsrv' => [
